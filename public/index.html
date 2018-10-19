@@ -10,6 +10,10 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <!-- <link rel="stylesheet" type="text/css" href="offline-language-english.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-language-english.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-theme-chrome.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/themes/offline-theme-slide.min.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -36,5 +40,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/offline-js/0.7.19/offline.min.js"></script>
+
+    <script>
+      var run = function(){
+        console.log(Offline.state);
+        var req = new XMLHttpRequest();
+        req.timeout = 5000;
+        req.open('GET', 'http://localhost:5000/', true);
+        req.send();
+      }
+      setInterval(run, 500);
+
+      // setInterval(() => { console.log(Offline.state); },3000);
+    </script>
+    <!-- <script src="offline.js"></script> -->
   </body>
 </html>
